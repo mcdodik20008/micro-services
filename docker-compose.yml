@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  eureka-server:
+    image: eurika
+    build:
+      context: ./eurika
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-network
+  web-api:
+    image: web-api
+    build:
+      context: ./web-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - microservices-network
+    depends_on:
+      - eureka-server
+  beer-service:
+    image: beer
+    build:
+      context: ./beer-service
+      dockerfile: Dockerfile
+    ports:
+      - "8081"
+    networks:
+      - microservices-network
+    depends_on:
+      - eureka-server
+    deploy:
+      replicas: 3
+
+networks:
+  microservices-network:
+    driver: bridge
