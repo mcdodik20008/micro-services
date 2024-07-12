@@ -1,7 +1,17 @@
 #!/bin/bash
 
-# Остановить и удалить существующие контейнеры
 docker-compose down
 
-# Пересобрать образы и запустить контейнеры
+cd ./beer-service
+mvn clean package
+cd ../
+
+cd ./eurika
+mvn clean package
+cd ../
+
+cd ./web-api
+mvn clean package
+cd ../
+
 docker-compose up --build -d

@@ -13,4 +13,5 @@ public class BeerViewReadOne {
 
     private String volume = "Пока хочется";
 
+    private String appName;
 }
