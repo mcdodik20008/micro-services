@@ -5,20 +5,24 @@ import mcitoservice.webapi.domain.chill.model.view.BeerViewReadOne;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @RestController
 @RequestMapping(value = "/chill", produces = "application/json")
 @RequiredArgsConstructor
 public class ChillController {
 
-    private final RestTemplate restTemplate;
+    private final WebClient webClient;
 
     @GetMapping
     public BeerViewReadOne chill() {
         String service = "beer-service";
         String url = "http://" + service +"/beer";
-        return restTemplate.getForObject(url, BeerViewReadOne.class);
+        return webClient.get()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(BeerViewReadOne.class)
+                .block();
     }
 
 }
