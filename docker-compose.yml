@@ -57,6 +57,7 @@ services:
     networks:
       - microservices-network
     depends_on:
+      - postgres
       - eureka-server
     deploy:
       replicas: 3
@@ -82,7 +83,26 @@ services:
       - microservices-network
     depends_on:
       - eureka-server
-
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: pi
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: pi
+    ports:
+      - "5432:5432"
+    networks:
+      - microservices-network
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 networks:
   microservices-network:
     driver: bridge
+
+volumes:
+  pgdata:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "E:/postgresDB"
