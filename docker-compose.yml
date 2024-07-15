@@ -21,6 +21,12 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     depends_on:
       - zookeeper
+#  kafka-tool:
+#    build:
+#      context: ./kafka-ui
+#      dockerfile: Dockerfile
+#    ports:
+#      - "9000:9000"
   eureka-server:
     image: eurika
     build:
