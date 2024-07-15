@@ -22,7 +22,7 @@ public class StewController {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     @SneakyThrows
-    @PostMapping("/order-stew")
+    @PostMapping("/order")
     public String sendMessage(@RequestBody StewSettingsView settings) {
 
         RabbitOrder order = new RabbitOrder(appName, settings.getCountRabbits());
