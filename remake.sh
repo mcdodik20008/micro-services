@@ -10,6 +10,14 @@ cd ./eurika
 mvn clean package
 cd ../
 
+cd ./rabbit-service
+mvn clean package
+cd ../
+
+cd ./stew-service
+mvn clean package
+cd ../
+
 cd ./web-api
 mvn clean package
 cd ../

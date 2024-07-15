@@ -2,9 +2,7 @@ package mcitoservice.webapi.domain.chill.controller;
 
 import lombok.RequiredArgsConstructor;
 import mcitoservice.webapi.domain.chill.model.view.BeerViewReadOne;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @RestController
@@ -17,7 +15,7 @@ public class ChillController {
     @GetMapping
     public BeerViewReadOne chill() {
         String service = "beer-service";
-        String url = "http://" + service +"/beer";
+        String url = "http://" + service + "/beer";
         return webClient.get()
                 .uri(url)
                 .retrieve()
