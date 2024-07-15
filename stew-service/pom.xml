@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>mcitoservice</groupId>
-    <artifactId>web-api</artifactId>
+    <artifactId>stew-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>web-api</name>
-    <description>web-api</description>
+    <name>stew-service</name>
+    <description>stew-service</description>
 
     <properties>
         <java.version>17</java.version>
